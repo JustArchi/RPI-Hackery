@@ -1,0 +1,36 @@
+# Archi additions
+disable_splash=1
+enable_uart=0
+gpu_mem=16
+
+# RPI starts with arm_freq_min until cpufreq takeover, boost it to the max for a short while to speed-up the boot process
+initial_turbo=15
+
+# Allow lower ARM frequency, 100 MHz is the minimum, but it causes excessive delays
+arm_freq_min=200
+
+# We need at least 150 MHz on the GPU to boot headless, since we also limit it to 150 max, HDMI won't work without a full power-cycle with cable plugged, which will override this to 200 MHz
+gpu_freq=150
+
+# We need at least 150 MHz on the GPU to boot headless, dropping below is unstable
+core_freq_min=150
+gpu_freq_min=150
+
+# Turn off H264
+h264_freq=1
+h264_freq_min=1
+
+# Turn off ISP
+isp_freq=1
+isp_freq_min=1
+
+# Turn off V3D
+v3d_freq=1
+v3d_freq_min=1
+
+# Turn off HEVC
+hevc_freq=1
+hevc_freq_min=1
+
+# Allow lower SDRAM frequency, this doesn't seem to have effect on RPI 4
+sdram_freq_min=1
