@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+set -eu
+
+type="dist-upgrade"
+
+for ARG in "$@"; do
+        case "$ARG" in
+                "--full"|"full") type="dist-upgrade" ;;
+                "--safe"|"safe") type="upgrade" ;;
+        esac
+done
+
+apt update --allow-releaseinfo-change
+apt "$type"
+apt autoremove --purge
+apt clean
